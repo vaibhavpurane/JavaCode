@@ -1,0 +1,106 @@
+day-2-sql queries-
+
+
+
+mysql> select * from employee;
++----+--------+-----------------+---------+--------+
+| id | name   | email           | contact | salary |
++----+--------+-----------------+---------+--------+
+|  1 | Ram    | ram@gmail.com   | 323131  |   4000 |
+|  2 | Shyam  | shyam@gmail.com | 123445  |  60000 |
+|  3 | Abhi   | abhi@gmail.com  | 797879  |  40000 |
+|  4 | Ram    | ram12@gmail.com | 67757   |  60000 |
+|  5 | Raju   | raju@gmil.com   | 98970   |  70000 |
+|  6 | ganesh | gane@gmail.com  | 576879  |  80000 |
++----+--------+-----------------+---------+--------+
+6 rows in set (0.00 sec)
+
+1
+
+mysql> select * from employee order by salary asc;
++----+--------+-----------------+---------+--------+
+| id | name   | email           | contact | salary |
++----+--------+-----------------+---------+--------+
+|  1 | Ram    | ram@gmail.com   | 323131  |   4000 |
+|  3 | Abhi   | abhi@gmail.com  | 797879  |  40000 |
+|  2 | Shyam  | shyam@gmail.com | 123445  |  60000 |
+|  4 | Ram    | ram12@gmail.com | 67757   |  60000 |
+|  5 | Raju   | raju@gmil.com   | 98970   |  70000 |
+|  6 | ganesh | gane@gmail.com  | 576879  |  80000 |
++----+--------+-----------------+---------+--------+
+6 rows in set (0.00 sec)
+
+
+2
+
+mysql> select * from employee order by salary desc;
++----+--------+-----------------+---------+--------+
+| id | name   | email           | contact | salary |
++----+--------+-----------------+---------+--------+
+|  6 | ganesh | gane@gmail.com  | 576879  |  80000 |
+|  5 | Raju   | raju@gmil.com   | 98970   |  70000 |
+|  2 | Shyam  | shyam@gmail.com | 123445  |  60000 |
+|  4 | Ram    | ram12@gmail.com | 67757   |  60000 |
+|  3 | Abhi   | abhi@gmail.com  | 797879  |  40000 |
+|  1 | Ram    | ram@gmail.com   | 323131  |   4000 |
++----+--------+-----------------+---------+--------+
+6 rows in set (0.00 sec)
+
+
+
+3
+
+mysql> select * from employee where salary>10000 order by id asc;
++----+--------+-----------------+---------+--------+
+| id | name   | email           | contact | salary |
++----+--------+-----------------+---------+--------+
+|  2 | Shyam  | shyam@gmail.com | 123445  |  60000 |
+|  3 | Abhi   | abhi@gmail.com  | 797879  |  40000 |
+|  4 | Ram    | ram12@gmail.com | 67757   |  60000 |
+|  5 | Raju   | raju@gmil.com   | 98970   |  70000 |
+|  6 | ganesh | gane@gmail.com  | 576879  |  80000 |
++----+--------+-----------------+---------+--------+
+5 rows in set (0.00 sec)
+
+
+4
+
+mysql> select * from employee where salary in (10000,40000,70000) order by id asc;
++----+------+----------------+---------+--------+
+| id | name | email          | contact | salary |
++----+------+----------------+---------+--------+
+|  3 | Abhi | abhi@gmail.com | 797879  |  40000 |
+|  5 | Raju | raju@gmil.com  | 98970   |  70000 |
++----+------+----------------+---------+--------+
+2 rows in set (0.00 sec)
+
+5
+
+mysql> select sum(salary) from employee;
++-------------+
+| sum(salary) |
++-------------+
+|      314000 |
++-------------+
+1 row in set (0.00 sec)
+
+6
+
+mysql> select count(*) from employee;
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.01 sec)
+
+
+7
+
+mysql> select max(salary) from employee group by name having count(name)>1;
++-------------+
+| max(salary) |
++-------------+
+|       60000 |
++-------------+
+1 row in set (0.00 sec)
